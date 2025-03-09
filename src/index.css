@@ -1,5 +1,106 @@
 @import "tailwindcss";
 
+/* Add this to your global CSS or styles */
+:root {
+  --glow-color-1: rgb(99, 101, 241); /* Purple */
+  --glow-color-2: rgba(59, 130, 246, 0.3); /* Blue */
+  --glow-color-3: rgba(16, 185, 129, 0.3); /* Green */
+}
+html
+{
+  scroll-behavior: smooth;
+
+}
+
+body {
+  background-color: #0f172a; /* Dark background */
+  overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+.glow-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Place behind other content */
+  overflow: hidden;
+}
+
+.glow-background::before,
+.glow-background::after {
+  content: '';
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(var(--glow-color-1), transparent 70%);
+  filter: blur(100px);
+  animation: moveGlow 10s infinite alternate ease-in-out;
+}
+
+.glow-background::before {
+  top: 20%;
+  left: 10%;
+}
+
+.glow-background::after {
+  top: 60%;
+  left: 70%;
+  background: radial-gradient(var(--glow-color-2), transparent 70%);
+  animation-duration: 12s;
+}
+
+.glow-background .glow-3 {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(var(--glow-color-3), transparent 70%);
+  filter: blur(120px);
+  top: 40%;
+  left: 50%;
+  animation: moveGlow2 15s infinite alternate ease-in-out;
+}
+
+
+
+@keyframes moveGlow2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-100px, 100px);
+  }
+  100% {
+    transform: translate(100px, -100px);
+  }
+}
+
+@keyframes moveGlow {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(50px, 50px);
+  }
+  100% {
+    transform: translate(-50px, -50px);
+  }
+}
+
+
+.glow-background::before,
+.glow-background::after {
+  /* Existing styles */
+  background: radial-gradient(var(--glow-color-1), transparent 70%);
+}
+
+.glow-background {
+  /* Add a gradient overlay */
+  background: radial-gradient(circle at 50% 50%, rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 1));
+}
+
+
+
 * {
   box-sizing: border-box;
 }
@@ -15,7 +116,7 @@ body, h1, h2, h3, p {
 
 main section h2 {
   overflow: hidden;
-  border-right: 0.2rem solid orange;
+  border-right: 0.2rem solid aquamarine;
   white-space: nowrap;
   width: fit-content; /* Adjust width to content */
   animation: 
@@ -31,7 +132,7 @@ main section h2 {
 
 @keyframes blink-caret {
   from, to { border-color: transparent }
-  50% { border-color: orange }
+  50% { border-color: aquamarine }
 }
 
 @keyframes hideCursor {
@@ -54,19 +155,89 @@ main section h2 {
   animation: blob 6s ease-in-out infinite;
 }
 
-#technologies
+#tech-stack h3
 {
-  animation: ;
+    background: radial-gradient(circle 300px at 30% -180%, var(--glow-color-2) 0%, #ffffff 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 4px rgba(255, 255, 255, .2), 0 0 14px rgba(130, 168, 236, .2);
+    letter-spacing: 2px;
 }
 
-@keyframes move {
+#socials div img
+{
+  transition: 0.2s ease-in-out;
+}
+#socials div img:hover
+{
+  transform: translateY(-0.2rem);
+  transition: 0.3s ease-in-out;
+}
+
+#social-linkedin-icon:hover img
+{
+  filter: invert(0.5) sepia(1) saturate(5) hue-rotate(175deg);
+}
+
+#social-github-icon:hover img {
+  filter: invert(0.5) sepia(1) saturate(50) hue-rotate(30deg);
+}
+
+#social-leet-icon:hover img {
+  filter: invert(0) sepia(1) saturate(5) hue-rotate(0deg);
+}
+#social-quaranteDeux-icon:hover img {
+  filter: invert(0.2) sepia(1) saturate(5) hue-rotate(160deg);
+}
+/* social-github-icon
+social-leet-icon
+social-quaranteDeux-icon */
+
+
+@keyframes scroll {
   0% {
-    transform: translate(0%, 0%);
+    transform: translateX(0);
   }
-  100%
-  {
-    transform: translate(100%  , 0%);
+  100% {
+    transform: translateX(-50%); /* Move only half the width */
   }
+}
+
+.animate-scroll {
+  animation: scroll 30s linear infinite;
+  display: flex;
+}
+
+
+#technologies {
+  overflow: hidden;
+  position: relative;
+}
+
+#technologies:hover div
+{
+  animation-play-state: paused;
+}
+
+#technologies div div
+{
+  transition: 0.3s ease-in-out;
+  border-color: rgba(142, 193, 196, 0.513);
+}
+
+#technologies div div img
+{
+  transition: 0.2s ease-in-out;
+}
+
+#technologies div div:hover
+{
+  border-width: 2px;
+  cursor: pointer;
+  border-color: aquamarine;
+  background: var(--glow-color-3);
+  box-shadow:rgba(142, 193, 196, 0.513) 0px 0px 20px 1px;
 }
 
 :root {
@@ -92,3 +263,4 @@ main section h2 {
   font-family: "scriptFont";
   src: url("https://fonts.gstatic.com/s/stylescript/v11/vm8xdRX3SV7Z0aPa88xzW5nZf176.woff2");
 }
+
