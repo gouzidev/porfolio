@@ -9,96 +9,12 @@
 html
 {
   scroll-behavior: smooth;
-
 }
 
 body {
-  background-color: #0f172a; /* Dark background */
+  background-color: rgb(8, 12, 22); /* Dark background */
   overflow-x: hidden; /* Prevent horizontal scroll */
 }
-
-.glow-background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1; /* Place behind other content */
-  overflow: hidden;
-}
-
-.glow-background::before,
-.glow-background::after {
-  content: '';
-  position: absolute;
-  width: 200px;
-  height: 200px;
-  background: radial-gradient(var(--glow-color-1), transparent 70%);
-  filter: blur(100px);
-  animation: moveGlow 10s infinite alternate ease-in-out;
-}
-
-.glow-background::before {
-  top: 20%;
-  left: 10%;
-}
-
-.glow-background::after {
-  top: 60%;
-  left: 70%;
-  background: radial-gradient(var(--glow-color-2), transparent 70%);
-  animation-duration: 12s;
-}
-
-.glow-background .glow-3 {
-  position: absolute;
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(var(--glow-color-3), transparent 70%);
-  filter: blur(120px);
-  top: 40%;
-  left: 50%;
-  animation: moveGlow2 15s infinite alternate ease-in-out;
-}
-
-
-
-@keyframes moveGlow2 {
-  0% {
-    transform: translate(0, 0);
-  }
-  50% {
-    transform: translate(-100px, 100px);
-  }
-  100% {
-    transform: translate(100px, -100px);
-  }
-}
-
-@keyframes moveGlow {
-  0% {
-    transform: translate(0, 0);
-  }
-  50% {
-    transform: translate(50px, 50px);
-  }
-  100% {
-    transform: translate(-50px, -50px);
-  }
-}
-
-
-.glow-background::before,
-.glow-background::after {
-  /* Existing styles */
-  background: radial-gradient(var(--glow-color-1), transparent 70%);
-}
-
-.glow-background {
-  /* Add a gradient overlay */
-  background: radial-gradient(circle at 50% 50%, rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 1));
-}
-
 
 
 * {
@@ -115,6 +31,7 @@ body, h1, h2, h3, p {
 
 
 main section h2 {
+  text-shadow: 0 0 4px rgba(255, 255, 255, .2), 0 0 14px rgba(130, 168, 236, .2);
   overflow: hidden;
   border-right: 0.2rem solid aquamarine;
   white-space: nowrap;
@@ -164,6 +81,54 @@ main section h2 {
     text-shadow: 0 0 4px rgba(255, 255, 255, .2), 0 0 14px rgba(130, 168, 236, .2);
     letter-spacing: 2px;
 }
+#nav-acheivement
+{
+  background: radial-gradient(circle 300px at 30% -360%, var(--glow-color-1) 0%, #ffffff 100%);
+  -webkit-text-fill-color: transparent; 
+  background-clip: text;
+}
+
+#projects h3
+{
+  background: radial-gradient(circle 300px at 30% -180%, var(--glow-color-2) 0%, #ffffff 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 4px rgba(255, 255, 255, .2), 0 0 14px rgba(130, 168, 236, .2);
+  letter-spacing: 2px;
+}
+
+#contact h3
+{
+  background: radial-gradient(circle 300px at 30% -180%, var(--glow-color-2) 0%, #ffffff 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 4px rgba(255, 255, 255, .2), 0 0 14px rgba(130, 168, 236, .2);
+  letter-spacing: 2px;
+}
+
+
+#projects h4
+{
+  background: radial-gradient(circle 300px at 30% -180%, white 0%, #ffffff 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 4px rgba(255, 255, 255, .2), 0 0 0px rgba(130, 168, 236, .2);
+  letter-spacing: 2px;
+}
+
+#acheivements h3
+{
+  background: radial-gradient(circle 300px at 30% -180%, blue 0%, #ffffff 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 4px rgba(255, 255, 255, .2), 0 0 14px rgba(130, 168, 236, .2);
+  letter-spacing: 2px;
+}
+
 
 #socials div img
 {
@@ -204,11 +169,26 @@ social-quaranteDeux-icon */
   }
 }
 
+@keyframes spin {
+  0% {
+    transform: rotateX(0);
+    background: #000;
+  }
+  100% {
+    transform: rotateX(50%); /* Move only half the width */
+  }
+}
+
+
 .animate-scroll {
   animation: scroll 30s linear infinite;
   display: flex;
 }
 
+.animate-roll
+{
+  animation: spin 5s linear infinite;
+}
 
 #technologies {
   overflow: hidden;
